@@ -1,0 +1,66 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/auth",
+  "description": "Creating or Registering a User succeeds",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "email",
+      "description": "A unique email address that no other Users have"
+    },
+    {
+      "required": true,
+      "name": "password",
+      "description": "A secret password"
+    },
+    {
+      "required": true,
+      "name": "password_confirmation",
+      "description": "An exact match to the password parameter"
+    },
+    {
+      "required": true,
+      "name": "confirm_success_url",
+      "description": "The url a user will redirect to after confirming their account"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/auth",
+      "request_body": "email=test3381d4aef165%40test.com&password=testpassword1&password_confirmation=testpassword1&confirm_success_url=http%3A%2F%2Flocalhost%3A3000",
+      "request_headers": {
+        "Accept": "application/json",
+        "Host": "example.org",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"status\":\"success\",\"data\":{\"id\":30,\"provider\":\"email\",\"uid\":\"test3381d4aef165@test.com\",\"name\":null,\"nickname\":null,\"image\":null,\"email\":\"test3381d4aef165@test.com\",\"created_at\":\"2017-04-17T01:17:23.731Z\",\"updated_at\":\"2017-04-17T01:17:23.731Z\",\"type\":\"user\"}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "Vary": "Origin",
+        "ETag": "W/\"d2b16df1ab6da0a16aa27e3415e0b282\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "9e07d60d-882c-41cd-ac75-0ecd6f937da1",
+        "X-Runtime": "1.432058",
+        "Content-Length": "261"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/auth\" -d 'email=test3381d4aef165%40test.com&password=testpassword1&password_confirmation=testpassword1&confirm_success_url=http%3A%2F%2Flocalhost%3A3000' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Content-Type: application/x-www-form-urlencoded\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

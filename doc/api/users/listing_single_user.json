@@ -1,0 +1,55 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/v1/users/:id",
+  "description": "Listing Single User",
+  "explanation": "Retreive a single user by it's :id",
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "User ID"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/users/29",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Access-Token": "jjND5cG-pC0I0IGpZTBklQ",
+        "Token-Type": "Bearer",
+        "Client": "5jHFXUZFLOxLkVBmJE2pCA",
+        "Expiry": "1493601442",
+        "Uid": "test4@test.com",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":\"29\",\"type\":\"users\",\"attributes\":{\"name\":\"John Doe\",\"email\":\"test4@test.com\"}}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "Vary": "Origin",
+        "ETag": "W/\"de4975fefd4f16abf0a0105ef9fe077a\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "8ae049c0-b188-4d93-add7-ee87ba4bfcd1",
+        "X-Runtime": "0.088668",
+        "Content-Length": "93"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/v1/users/29\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-Token: jjND5cG-pC0I0IGpZTBklQ\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Client: 5jHFXUZFLOxLkVBmJE2pCA\" \\\n\t-H \"Expiry: 1493601442\" \\\n\t-H \"Uid: test4@test.com\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "resources": [
+    {
+      "name": "Users",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Creating or Registering a User succeeds",
+          "link": "users/creating_or_registering_a_user_succeeds.json",
+          "groups": "all",
+          "route": "/auth",
+          "method": "post"
+        },
+        {
+          "description": "Creating or Registering a User with a non matching password fails",
+          "link": "users/creating_or_registering_a_user_with_a_non_matching_password_fails.json",
+          "groups": "all",
+          "route": "/auth",
+          "method": "post"
+        },
+        {
+          "description": "Creating or Registering a User with a non unique email fails",
+          "link": "users/creating_or_registering_a_user_with_a_non_unique_email_fails.json",
+          "groups": "all",
+          "route": "/auth",
+          "method": "post"
+        },
+        {
+          "description": "Failed authentication of a unconfirmed or unregistered User",
+          "link": "users/failed_authentication_of_a_unconfirmed_or_unregistered_user.json",
+          "groups": "all",
+          "route": "/auth/sign_in",
+          "method": "post"
+        },
+        {
+          "description": "Listing Single User",
+          "link": "users/listing_single_user.json",
+          "groups": "all",
+          "route": "/v1/users/:id",
+          "method": "get"
+        },
+        {
+          "description": "Listing Users",
+          "link": "users/listing_users.json",
+          "groups": "all",
+          "route": "/v1/users",
+          "method": "get"
+        },
+        {
+          "description": "Signing a User in confirmed and registered User",
+          "link": "users/signing_a_user_in_confirmed_and_registered_user.json",
+          "groups": "all",
+          "route": "/auth/sign_in",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}

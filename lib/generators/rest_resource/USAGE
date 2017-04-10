@@ -1,0 +1,18 @@
+Description:
+    This creates the controllers, models, serializers, routes, specs, and api docs necessary for a new restful resource
+
+Example:
+    rails generate rest_resource Thing description:text email phone_number production_url staging_url state:integer:null
+
+    This will insert into:
+        config/routes.rb
+        spec/factories.rb
+
+    This will create:
+        app/controllers/api/v1/things_controller.rb
+        app/models/thing.rb
+        app/serializers/thing_serializer.rb
+        db/migrate/20170412060602_create_things.rb
+        spec/acceptance/v1/things_spec.rb
+        spec/models/thing_spec.rb
+        spec/routing/v1/things_routing_spec.rb

@@ -1,0 +1,51 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/v1/users",
+  "description": "Listing Users",
+  "explanation": "Retrieve all of the users.",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/v1/users",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Access-Token": "3-U2tz90h1IkURGgmRKZJg",
+        "Token-Type": "Bearer",
+        "Client": "Xd8Y7Gg7mF51uBMCYw_jxg",
+        "Expiry": "1493601442",
+        "Uid": "test3@test.com",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": null,
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":[{\"id\":\"26\",\"type\":\"users\",\"attributes\":{\"name\":\"John Doe\",\"email\":\"test1@test.com\"}},{\"id\":\"27\",\"type\":\"users\",\"attributes\":{\"name\":\"John Doe\",\"email\":\"test2@test.com\"}},{\"id\":\"28\",\"type\":\"users\",\"attributes\":{\"name\":\"John Doe\",\"email\":\"test3@test.com\"}}]}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "Vary": "Origin",
+        "ETag": "W/\"83116bea27673882d69e9a7e0a5a8b2a\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "86912f67-5489-4d9a-98c9-d2e26d619f8a",
+        "X-Runtime": "0.152826",
+        "Content-Length": "265"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/v1/users\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-Token: 3-U2tz90h1IkURGgmRKZJg\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Client: Xd8Y7Gg7mF51uBMCYw_jxg\" \\\n\t-H \"Expiry: 1493601442\" \\\n\t-H \"Uid: test3@test.com\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

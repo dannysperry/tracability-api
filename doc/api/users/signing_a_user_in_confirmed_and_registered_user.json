@@ -1,0 +1,61 @@
+{
+  "resource": "Users",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/auth/sign_in",
+  "description": "Signing a User in confirmed and registered User",
+  "explanation": "request authentication headers with a registered and confirmed User's authentication credentials",
+  "parameters": [
+    {
+      "required": true,
+      "name": "email",
+      "description": "A valid email address of a registered user"
+    },
+    {
+      "required": true,
+      "name": "password",
+      "description": "A valid password for the associated users email"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/auth/sign_in",
+      "request_body": "email=test6%40test.com&password=testpass1234",
+      "request_headers": {
+        "Accept": "application/json",
+        "Host": "example.org",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"data\":{\"id\":32,\"email\":\"test6@test.com\",\"provider\":\"email\",\"uid\":\"test6@test.com\",\"name\":\"John Doe\",\"nickname\":null,\"image\":null,\"type\":\"user\"}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/json; charset=utf-8",
+        "access-token": "Fykwnq-2OfMadanKjNSVww",
+        "token-type": "Bearer",
+        "client": "U4VNm88IKmNgRjeizz0xKQ",
+        "expiry": "1493601444",
+        "uid": "test6@test.com",
+        "Vary": "Origin",
+        "ETag": "W/\"a3f1933c124994c37b3a9447bbb89561\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "19d505e8-ee68-40fc-92fc-6676bcd8ff34",
+        "X-Runtime": "0.193036",
+        "Content-Length": "146"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/auth/sign_in\" -d 'email=test6%40test.com&password=testpass1234' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Content-Type: application/x-www-form-urlencoded\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/grolar/workspace/rails/tracability-api/app/models/user.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/users_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/api_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/user_serializer.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/home_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1492391844
+  }
+}
