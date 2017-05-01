@@ -5,6 +5,7 @@ require 'rspec_api_documentation/dsl'
 
 resource "Users" do
   let(:user) { create(:user) }
+  let(:id) { user.id }
   let(:auth_tokens) { user.confirm && user.create_new_auth_token }
 
   header "Accept", "application/json"
@@ -24,12 +25,8 @@ resource "Users" do
     header "uid", :auth_uid
 
     example "Listing Users" do
-      explanation "Retrieve all of the users."
-
       2.times { create(:user) }
-
       do_request
-
       expect(client.status).to eq(200)
     end
   end
@@ -43,11 +40,7 @@ resource "Users" do
 
     parameter :id, "User ID", required: true
 
-    example "Listing Single User" do
-      explanation "Retreive a single user by it's :id"
-
-      do_request({ id: user.id })
-
+    example_request "Listing Single User" do
       expect(client.status).to eq(200)
     end
   end
@@ -58,7 +51,7 @@ resource "Users" do
     parameter :password_confirmation, "An exact match to the password parameter", required: true
     parameter :confirm_success_url, "The url a user will redirect to after confirming their account", required: true
 
-    example "Creating or Registering a User succeeds" do
+    example "Creates or registers a User" do
       do_request({
         email: "test#{SecureRandom.hex(6)}@test.com",
         password: "testpassword1",
@@ -69,7 +62,7 @@ resource "Users" do
       expect(client.status).to eq 200
     end
 
-    example "Creating or Registering a User with a non unique email fails" do
+    example "Fails to create or register a User with a non unique email" do
 
       do_request({
         email: user.email,
@@ -81,7 +74,7 @@ resource "Users" do
       expect(client.status).to eq 422
     end
 
-    example "Creating or Registering a User with a non matching password fails" do
+    example "Fails to create or register a User with a non matching password" do
       do_request({
         email: "test#{SecureRandom.hex(6)}@test.com",
         password: "testpassword1",
@@ -97,7 +90,7 @@ resource "Users" do
     parameter :email, "A valid email address of a registered user", required: true
     parameter :password, "A valid password for the associated users email", required: true
 
-    example 'Signing a User in confirmed and registered User' do
+    example 'Signs a User in' do
       explanation "request authentication headers with a registered and confirmed User's authentication credentials"
       user.confirm
       do_request({ email: user.email, password: user.password })
@@ -105,7 +98,7 @@ resource "Users" do
       expect(client.status).to eq 200
     end
 
-    example 'Failed authentication of a unconfirmed or unregistered User' do
+    example 'Signs a User in fails with a unconfirmed or unregistered User' do
       explanation "request authentication headers with a registered and confirmed User's authentication credentials"
 
       do_request({ email: user.email, password: user.password })
