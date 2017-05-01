@@ -22,6 +22,13 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/city.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/inventory_type.rb": [
         1,
         1,
@@ -35,6 +42,61 @@
         null
       ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/state.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/cities_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/api_controller.rb": [
         1,
         1,
         1,
@@ -87,12 +149,6 @@
         null,
         null,
         null,
-        null
-      ],
-      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/api_controller.rb": [
-        1,
-        1,
-        1,
         null
       ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/notes_controller.rb": [
@@ -193,6 +249,17 @@
         null,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/city_serializer.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/state_serializer.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/serializers/inventory_type_serializer.rb": [
         1,
         1,
@@ -202,11 +269,6 @@
         1,
         1,
         null,
-        1,
-        null
-      ],
-      "/Users/grolar/workspace/rails/tracability-api/app/serializers/state_serializer.rb": [
-        1,
         1,
         null
       ],
@@ -233,6 +295,6 @@
         null
       ]
     },
-    "timestamp": 1493666300
+    "timestamp": 1493675984
   }
 }
