@@ -27,9 +27,11 @@ I've provided a `rest_resource` generator. It's main purpose is to closely lay o
 ex: `bundle exec rails g rest_resource Project description:text email phone_number production_url staging_url state:integer`
 
 Double check the attributes inside
-  - the migration file
-  - factories
-  - controller safe params
-  - acceptance specs attributes
-  - model specs associated with any active record associations/validations made.
+  1. the migration file
+  2. factories
+  3. controller safe params
+  4. acceptance specs attributes
+  5. model specs associated with any active record associations/validations made.
+  6. Run `bundle exec rails db:migrate RAILS_ENV=test` and `bundle exec rails db:migrate`
+  7. 
 
