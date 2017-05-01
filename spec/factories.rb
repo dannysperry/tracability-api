@@ -1,6 +1,9 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :inventory_type do
+    name { Faker::Lorem.word }
+  end
   factory :note do
     description { Faker::Lorem.sentence }
     name { Faker::Lorem.word }
