@@ -21,7 +21,6 @@ module Api
           render json: <%= "@#{orm_instance.errors}" %>, status: :unprocessable_entity
         end
       end
-
       # PATCH/PUT <%= route_url %>/1
       def update
         if @<%= orm_instance.update("#{singular_table_name}_params") %>

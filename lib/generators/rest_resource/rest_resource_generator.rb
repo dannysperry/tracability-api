@@ -14,24 +14,25 @@ module Rails
 
       class_option :orm, banner: "NAME", type: :string, required: true,
                          desc: "ORM to generate the controller for"
+      class_option :skip_controllers, type: :boolean,
+                                      desc: "Skip Controllers, Routes, and Tests"
+      class_option :skip_model, type: :boolean,
+                                desc: "Skip Models, Factory, and Model Tests"
 
       argument :attributes, type: :array, default: [], banner: "field[:type] field[:type]"
 
-
-      def templatize_rest_controller
-        templatize_controller_file
-        inject_routes_resource
-      end
-
       def generate_resource
-        @attributes_string = attributes.map { |attribute| "#{attribute.name}:#{attribute.type}" }.join(" ")
-        generate_model
-        generate_serializer
-      end
-
-      def templatize_specs
-        templatize_routing_spec
-        templatize_acceptance_spec
+        unless options.skip_model?
+          @attributes_string = attributes.map { |attribute| "#{attribute.name}:#{attribute.type}" }.join(" ")
+          generate_model
+        end
+        unless options.skip_controllers?
+          templatize_controller_file
+          templatize_acceptance_spec
+          inject_routes_resource
+          templatize_routing_spec
+          generate_serializer
+        end
       end
 
       private
