@@ -1,6 +1,10 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :city do
+    state
+    name { Faker::Address.city }
+  end
   factory :state do
     name { Faker::Address.state }
     abbreviation { Faker::Address.state_abbr }
