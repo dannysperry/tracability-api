@@ -1,6 +1,10 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :regulation do
+    legal_reference_code "1a.11"
+    description { Faker::Lorem.sentence }
+  end
   factory :license do
     state
     license_number { Faker::Crypto.md5 }

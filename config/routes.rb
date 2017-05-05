@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         resources :licenses
         resources :cities
       end
+      resources :regulations
       resources :inventory_types
       resources :notes
       resources :users, only: [:index, :show]

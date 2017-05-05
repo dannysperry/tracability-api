@@ -55,6 +55,11 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/regulation.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/state.rb": [
         1,
         1,
@@ -280,6 +285,57 @@
         null,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/regulations_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/states_controller.rb": [
         1,
         1,
@@ -364,6 +420,11 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/regulation_serializer.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/users_controller.rb": [
         1,
         1,
@@ -387,6 +448,6 @@
         null
       ]
     },
-    "timestamp": 1494027059
+    "timestamp": 1494027985
   }
 }
