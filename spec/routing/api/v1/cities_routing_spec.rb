@@ -3,15 +3,15 @@ require "rails_helper"
 RSpec.describe Api::V1::CitiesController do
   describe "routing" do
     it "routes to #index" do
-      expect(:get => "/v1/cities").to route_to("api/v1/cities#index")
+      expect(:get => "/v1/states/1/cities").to route_to("api/v1/cities#index", state_id: "1")
+    end
+
+    it "routes to #create" do
+      expect(:post => "/v1/states/1/cities").to route_to("api/v1/cities#create", state_id: "1")
     end
 
     it "routes to #show" do
       expect(:get => "/v1/cities/1").to route_to("api/v1/cities#show", :id => "1")
-    end
-
-    it "routes to #create" do
-      expect(:post => "/v1/cities").to route_to("api/v1/cities#create")
     end
 
     it "routes to #update via PUT" do

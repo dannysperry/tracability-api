@@ -18,14 +18,48 @@ resource "Cities" do
   header "expiry", :auth_expiry
   header "uid", :auth_uid
 
-  let(:city)    { build(:city) }
+  let(:state) { build(:state) }
+  let(:state_id) { state.save and state.id }
+
+  let(:city) { build(:city, state_id: state_id) }
   let(:id) { city.save and city.id }
 
-  get "/v1/cities" do
+  get "/v1/states/:state_id/cities" do
+    parameter :state_id, 'State ID', required: true
+
     example "Listing cities" do
-      2.times { create(:city) }
+      2.times do
+        city = create(:city)
+        city.state.save
+      end
       do_request
       expect(client.status).to eq(200)
+    end
+  end
+
+  post "/v1/states/:state_id/cities" do
+    parameter :state_id, 'State ID', required: true
+    with_options scope: :city do
+      parameter :name, 'Name of City', required: true
+    end
+
+    example "Creates a city" do
+      expect {
+        do_request({
+          state_id: create(:state).id,
+          city: {
+            name: "fake name"
+          }
+        })
+      }.to change {
+        City.count
+      }.by 1
+      expect(client.status).to eq(201)
+    end
+
+    let!(:city_name) { nil }
+    example_request "Fails to add a city" do
+      expect(client.status).to eq 422
     end
   end
 
@@ -37,51 +71,24 @@ resource "Cities" do
     end
   end
 
-  post "/v1/cities" do
-    with_options scope: :city do
-      parameter :state_id, 'State ID of City', required: true
-      parameter :name, 'Name of City', required: true
-    end
-
-    example "Creates a city" do
-      expect {
-        do_request({
-          city: {
-            state_id: create(:state).id,
-            name: "fake name"
-          }
-        })
-      }.to change {
-        City.count
-      }.by 1
-      expect(client.status).to eq(201)
-    end
-
-    let(:state_id) { nil }
-    example_request "Fails to add a city" do
-      expect(client.status).to eq 422
-    end
-  end
-
   patch "/v1/cities/:id" do
     parameter :id, "City ID", required: true
 
     with_options scope: :city do
-      parameter :state_id, 'State ID of City', required: true
-      parameter :name, 'Name of City', required: true
+      parameter :state_id, "State ID"
+      parameter :name, 'Name of City'
     end
 
     example "Updates a city" do
       do_request({
         city: {
-          state_id: city.state.id,
-          name: city.name
+          name: "name name name"
         }
       })
       expect(client.status).to eq(200)
     end
 
-    let(:state_id) { nil }
+    let!(:city_name) { nil }
     example_request "Fails to update a city" do
       expect(client.status).to eq(422)
     end

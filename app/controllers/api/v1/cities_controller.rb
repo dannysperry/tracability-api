@@ -2,24 +2,27 @@ module Api
   module V1
     class CitiesController < ApiController
       before_action :set_city, only: [:show, :update, :destroy]
+      before_action :set_state, only: [:index, :create]
+      # collections
       # GET /cities
       def index
-        @cities = City.all
+        @cities = @state.cities
         render json: @cities
-      end
-      # GET /cities/1
-      def show
-        render json: @city
       end
       # POST /cities
       def create
-        @city = City.new(city_params)
+        @city = @state.cities.build city_params
 
         if @city.save
-          render json: @city, status: :created, location: ['v1', @city]
+          render json: @city, status: :created
         else
           render json: @city.errors, status: :unprocessable_entity
         end
+      end
+      # members
+      # GET /cities/1
+      def show
+        render json: @city
       end
       # PATCH/PUT /cities/1
       def update
@@ -35,6 +38,11 @@ module Api
       end
       private
         # Use callbacks to share common setup or constraints between actions.
+        def set_state
+          unless params[:state_id].nil?
+            @state = State.find(params[:state_id].to_i)
+          end
+        end
         def set_city
           @city = City.find(params[:id])
         end

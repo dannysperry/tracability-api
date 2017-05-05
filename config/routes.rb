@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   scope module: 'api' do
     mount_devise_token_auth_for 'User', at: 'auth'
     namespace :v1 do
-      resources :cities
-      resources :states
+      resources :states, shallow: true do
+        resources :cities
+      end
       resources :inventory_types
       resources :notes
       resources :users, only: [:index, :show]
