@@ -28,10 +28,7 @@ resource "Cities" do
     parameter :state_id, 'State ID', required: true
 
     example "Listing cities" do
-      2.times do
-        city = create(:city)
-        city.state.save
-      end
+      2.times { create(:city) }
       do_request
       expect(client.status).to eq(200)
     end

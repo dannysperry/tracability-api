@@ -18,10 +18,23 @@ resource "<%= class_name %>s" do
   header "expiry", :auth_expiry
   header "uid", :auth_uid
 
-  let(<%= ":#{singular_table_name}" %>)    { build(<%= ":#{singular_table_name}" %>) }
+<%- if options.parent.present? -%>
+  let(:<%= singular_parent_table_name %>) { build(:<%= "#{singular_parent_table_name}" %>) }
+  let(:<%= singular_parent_table_name %>_id) { <%= singular_parent_table_name %>.save and <%= singular_parent_table_name %>.id }
+
+  let(:<%= singular_table_name %>) { build(:<%= singular_table_name %>, <%= singular_parent_table_name %>_id: <%= singular_parent_table_name %>_id) }
+<%- else -%>
+  let(:<%= singular_table_name %>) { build(:<%= singular_table_name %>) }
+<%- end -%>
   let(:id) { <%= "#{singular_table_name}.save and #{singular_table_name}.id" %> }
 
-  get "/v1/<%= singular_table_name %>s" do
+
+<%- if options.parent.present? -%>
+  get "v1/<%= plural_parent_table_name %>/1/<%= plural_table_name %>"
+    parameter :<%= singular_parent_table_name %>_id, '<%= parent_class %> ID', required: true
+<%- else -%>
+  get "/v1/<%= plural_table_name %>" do
+<%- end -%>
     example "Listing <%= singular_table_name %>s" do
       2.times { create(<%= ":#{singular_table_name}" %>) }
       do_request
@@ -29,20 +42,17 @@ resource "<%= class_name %>s" do
     end
   end
 
-  get "/v1/<%= singular_table_name %>s/:id" do
-    parameter :id, "<%= class_name %> ID", required: true
-
-    example_request "Listing a <%= singular_table_name %>" do
-      expect(client.status).to eq(200)
-    end
-  end
-
-  post "/v1/<%= singular_table_name %>s" do
+<%- if options.parent.present? -%>
+  post "v1/<%= plural_parent_table_name %>/1/<%= plural_table_name %>"
+    parameter :<%= singular_parent_table_name %>_id, '<%= parent_class %> ID', required: true
+<%- else -%>
+  post "/v1/<%= plural_table_name %>" do
+<%- end -%>
     with_options scope: <%= ":#{singular_table_name}" %> do
-    <% attributes.each do |attribute| -%>
-  parameter :<%= "#{attribute.name}, '#{attribute.name.titleize} of #{class_name}'" %>
-    <% end -%>
-end
+<%- attribute_names.each do |attribute| -%>
+      parameter :<%= "#{attribute}, '#{attribute.titleize} of #{class_name}'" %>
+<%- end -%>
+    end
 
     example "Creates a <%= singular_table_name %>" do
       expect {
@@ -55,10 +65,17 @@ end
       expect(client.status).to eq(201)
     end
 
-    let(:<%= attributes.first.name -%>) { nil }
+    let(:<%= attribute_names.first -%>) { nil }
     example_request "Fails to add a <%= singular_table_name %>" do
-      do_request
       expect(client.status).to eq 422
+    end
+  end
+
+  get "/v1/<%= singular_table_name %>s/:id" do
+    parameter :id, "<%= class_name %> ID", required: true
+
+    example_request "Listing a <%= singular_table_name %>" do
+      expect(client.status).to eq(200)
     end
   end
 
@@ -66,23 +83,23 @@ end
     parameter :id, "<%= class_name %> ID", required: true
 
     with_options scope: <%= ":#{singular_table_name}" %> do
-    <% attributes.each do |attribute| -%>
-  parameter :<%= "#{attribute.name}, '#{attribute.name.titleize} of #{class_name}'" %>
-    <% end -%>
-end
+    <%- attribute_names.each do |attribute| -%>
+      parameter :<%= "#{attribute}, '#{attribute.titleize} of #{class_name}'" %>
+    <%- end -%>
+    end
 
     example "Updates a <%= singular_table_name %>" do
       do_request({
-        <%= "#{singular_table_name}: {" %>
-        <% attributes.each do |attribute| -%>
-  <%= "#{attribute.name}: #{singular_table_name}.#{attribute.name}#{attribute == attributes.last ? nil : ','}" %>
-        <% end -%>
-}
+        <%= singular_table_name %>: {
+        <%- attribute_names.each do |attribute| -%>
+          <%= "#{attribute}: #{singular_table_name}.#{attribute}#{attribute == attribute_names.last ? nil : ','}" %>
+        <%- end -%>
+        }
       })
       expect(client.status).to eq(200)
     end
 
-    let(:<%= attributes.first.name -%>) { nil }
+    let(:<%= attribute_names.first %>) { nil }
     example_request "Fails to update a <%= singular_table_name %>" do
       expect(client.status).to eq(422)
     end

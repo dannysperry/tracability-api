@@ -2,7 +2,7 @@ Description:
     This creates the controllers, models, serializers, routes, specs, and api docs necessary for a new restful resource
 
 Example:
-    rails generate rest_resource Thing description:text email phone_number production_url staging_url state:integer:null
+    rails generate rest_resource Thing description:text email phone_number production_url staging_url state:integer:null --parent Parent
 
     This will insert into:
         config/routes.rb

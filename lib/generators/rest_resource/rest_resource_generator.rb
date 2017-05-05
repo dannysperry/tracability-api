@@ -13,17 +13,19 @@ module Rails
 
 
       class_option :orm, banner: "NAME", type: :string, required: true,
-                         desc: "ORM to generate the controller for"
+                   desc: "ORM to generate the controller for"
+
       class_option :skip_controllers, type: :boolean,
                                       desc: "Skip Controllers, Routes, and Tests"
       class_option :skip_model, type: :boolean,
                                 desc: "Skip Models, Factory, and Model Tests"
+      class_option :parent, type: :string, desc: "Make resource a shallow nesting of parent"
 
-      argument :attributes, type: :array, default: [], banner: "field[:type] field[:type]"
+      class_option :attributes, type: :array, default: [], banner: "field:type field:type"
+
 
       def generate_resource
         unless options.skip_model?
-          @attributes_string = attributes.map { |attribute| "#{attribute.name}:#{attribute.type}" }.join(" ")
           generate_model
         end
         unless options.skip_controllers?
@@ -34,6 +36,24 @@ module Rails
           generate_serializer
         end
       end
+
+      protected
+
+        def parent_class
+          options.parent.classify.constantize
+        end
+
+        def singular_parent_table_name
+          options.parent.downcase.singularize
+        end
+
+        def plural_parent_table_name
+          options.parent.downcase.pluralize
+        end
+
+        def attribute_names
+          @attributes.map {|a| a.split(":")}.map(&:first)
+        end
 
       private
 
@@ -54,11 +74,11 @@ module Rails
 
         # generate_resource
         def generate_model
-          generate "model", "#{class_name} #{@attributes_string} --no-request-specs"
+          generate "model", "#{class_name} #{@attributes.join(" ")} --no-request-specs"
         end
 
         def generate_serializer
-          generate "serializer", "#{class_name} #{@attributes_string}"
+          generate "serializer", "#{class_name} #{@attributes.join(" ")}"
         end
 
         # templatize_specs
@@ -77,6 +97,7 @@ module Rails
           )
           template "acceptance_spec.rb", template_file
         end
+
     end
   end
 end
