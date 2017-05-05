@@ -1,6 +1,11 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :license do
+    state
+    license_number { Faker::Crypto.md5 }
+    license_type { [:processor, :producer, :retailer].sample }
+  end
   factory :city do
     state
     name { Faker::Address.city }

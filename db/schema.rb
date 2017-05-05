@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501214936) do
+ActiveRecord::Schema.define(version: 20170505225508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20170501214936) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "licenses", force: :cascade do |t|
+    t.string   "license_number", null: false
+    t.integer  "license_type",   null: false
+    t.integer  "state_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["license_number"], name: "index_licenses_on_license_number", unique: true, using: :btree
+    t.index ["state_id"], name: "index_licenses_on_state_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
@@ -75,4 +85,5 @@ ActiveRecord::Schema.define(version: 20170501214936) do
   end
 
   add_foreign_key "cities", "states"
+  add_foreign_key "licenses", "states"
 end

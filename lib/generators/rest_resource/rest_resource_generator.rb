@@ -25,6 +25,7 @@ module Rails
 
 
       def generate_resource
+        @attributes = options.attributes
         unless options.skip_model?
           generate_model
         end

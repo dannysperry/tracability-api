@@ -30,7 +30,7 @@ resource "<%= class_name %>s" do
 
 
 <%- if options.parent.present? -%>
-  get "v1/<%= plural_parent_table_name %>/1/<%= plural_table_name %>"
+  get "v1/<%= plural_parent_table_name %>/1/<%= plural_table_name %>" do
     parameter :<%= singular_parent_table_name %>_id, '<%= parent_class %> ID', required: true
 <%- else -%>
   get "/v1/<%= plural_table_name %>" do
@@ -43,7 +43,7 @@ resource "<%= class_name %>s" do
   end
 
 <%- if options.parent.present? -%>
-  post "v1/<%= plural_parent_table_name %>/1/<%= plural_table_name %>"
+  post "v1/<%= plural_parent_table_name %>/1/<%= plural_table_name %>" do
     parameter :<%= singular_parent_table_name %>_id, '<%= parent_class %> ID', required: true
 <%- else -%>
   post "/v1/<%= plural_table_name %>" do
