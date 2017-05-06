@@ -36,7 +36,11 @@ resource "<%= class_name %>s" do
   get "/v1/<%= plural_table_name %>" do
 <%- end -%>
     example "Listing <%= singular_table_name %>s" do
-      2.times { create(<%= ":#{singular_table_name}" %>) }
+    <%- if options.parent.present? -%>
+      2.times { create(:<%= singular_table_name %>, <%= singular_parent_table_name %>_id: <%= singular_parent_table_name %>_id) }
+    <%- else -%>
+      2.times { create(:<%= singular_table_name %>) }
+    <%- end -%>
       do_request
       expect(client.status).to eq(200)
     end
@@ -49,7 +53,7 @@ resource "<%= class_name %>s" do
   post "/v1/<%= plural_table_name %>" do
 <%- end -%>
     with_options scope: <%= ":#{singular_table_name}" %> do
-<%- attribute_names.each do |attribute| -%>
+<%- attributes_names.each do |attribute| -%>
       parameter :<%= "#{attribute}, '#{attribute.titleize} of #{class_name}'" %>
 <%- end -%>
     end
@@ -57,7 +61,8 @@ resource "<%= class_name %>s" do
     example "Creates a <%= singular_table_name %>" do
       expect {
         do_request({
-          <%= "#{singular_table_name}: attributes_for(:#{singular_table_name})" %>
+          <%= singular_parent_table_name %>_id: <%= singular_parent_table_name %>_id,
+          <%= singular_table_name %>: attributes_for(:<%= singular_table_name %>)
         })
       }.to change {
         <%= "#{class_name}.count" %>
@@ -65,7 +70,7 @@ resource "<%= class_name %>s" do
       expect(client.status).to eq(201)
     end
 
-    let(:<%= attribute_names.first -%>) { nil }
+    let(:<%= attributes_names.first -%>) { nil }
     example_request "Fails to add a <%= singular_table_name %>" do
       expect(client.status).to eq 422
     end
@@ -83,7 +88,7 @@ resource "<%= class_name %>s" do
     parameter :id, "<%= class_name %> ID", required: true
 
     with_options scope: <%= ":#{singular_table_name}" %> do
-    <%- attribute_names.each do |attribute| -%>
+    <%- attributes_names.each do |attribute| -%>
       parameter :<%= "#{attribute}, '#{attribute.titleize} of #{class_name}'" %>
     <%- end -%>
     end
@@ -91,15 +96,15 @@ resource "<%= class_name %>s" do
     example "Updates a <%= singular_table_name %>" do
       do_request({
         <%= singular_table_name %>: {
-        <%- attribute_names.each do |attribute| -%>
-          <%= "#{attribute}: #{singular_table_name}.#{attribute}#{attribute == attribute_names.last ? nil : ','}" %>
+        <%- attributes_names.each do |attribute| -%>
+          <%= "#{attribute}: #{singular_table_name}.#{attribute}#{attribute == attributes_names.last ? nil : ','}" %>
         <%- end -%>
         }
       })
       expect(client.status).to eq(200)
     end
 
-    let(:<%= attribute_names.first %>) { nil }
+    let(:<%= attributes_names.first %>) { nil }
     example_request "Fails to update a <%= singular_table_name %>" do
       expect(client.status).to eq(422)
     end
