@@ -9,4 +9,6 @@ class License < ApplicationRecord
 
   validates :license_type,
     presence: true
+
+  has_many :vehicles
 end

@@ -1,6 +1,14 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :vehicle do
+    license
+    vin { Faker::Vehicle.vin }
+    make "Subaru"
+    model "Outback"
+    year 2000
+    color "black"
+  end
   factory :regulation do
     legal_reference_code "1a.11"
     description { Faker::Lorem.sentence }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505234157) do
+ActiveRecord::Schema.define(version: 20170505234838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,19 @@ ActiveRecord::Schema.define(version: 20170505234157) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.integer  "license_id"
+    t.string   "vin"
+    t.string   "make"
+    t.string   "model"
+    t.integer  "year"
+    t.string   "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["license_id"], name: "index_vehicles_on_license_id", using: :btree
+  end
+
   add_foreign_key "cities", "states"
   add_foreign_key "licenses", "states"
+  add_foreign_key "vehicles", "licenses"
 end
