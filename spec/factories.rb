@@ -1,6 +1,14 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :location do
+    license
+    city
+    name { Faker::Company.name }
+    street_address { Faker::Address.street_address }
+    phone_number { Faker::PhoneNumber.phone_number }
+    area_in_inches 100_000
+  end
   factory :vehicle do
     license
     vin { Faker::Vehicle.vin }

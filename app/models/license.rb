@@ -11,4 +11,5 @@ class License < ApplicationRecord
     presence: true
 
   has_many :vehicles
+  has_many :locations
 end

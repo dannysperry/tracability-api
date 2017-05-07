@@ -48,6 +48,15 @@
         null,
         null,
         1,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/location.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
         null
       ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/note.rb": [
@@ -192,6 +201,61 @@
         null
       ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/licenses_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        3,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/locations_controller.rb": [
         1,
         1,
         1,
@@ -478,6 +542,11 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/location_serializer.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/serializers/note_serializer.rb": [
         1,
         1,
@@ -519,6 +588,6 @@
         null
       ]
     },
-    "timestamp": 1494030044
+    "timestamp": 1494115697
   }
 }
