@@ -74,6 +74,12 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/physician.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/regulation.rb": [
         1,
         1,
@@ -429,6 +435,57 @@
         null,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/physicians_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/regulations_controller.rb": [
         1,
         1,
@@ -682,6 +739,11 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/physician_serializer.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/serializers/regulation_serializer.rb": [
         1,
         1,
@@ -721,6 +783,6 @@
         null
       ]
     },
-    "timestamp": 1494309870
+    "timestamp": 1494355870
   }
 }

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope module: 'api' do
     mount_devise_token_auth_for 'User', at: 'auth'
     namespace :v1 do
+      resources :physicians
       resources :states, shallow: true do
         resources :licenses, shallow: true do
           resources :vehicles

@@ -1,6 +1,10 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :physician do
+    name { Faker::Company.name }
+    license_number { Faker::Crypto.md5 }
+  end
   factory :growing_stage do
     name { Faker::Company.name }
     description { Faker::Lorem.sentence }
