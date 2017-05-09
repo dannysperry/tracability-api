@@ -1,6 +1,11 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :growing_stage do
+    name { Faker::Company.name }
+    description { Faker::Lorem.sentence }
+    license
+  end
   factory :strain do
     name { Faker::Company.name }
     expected_potency 28.4

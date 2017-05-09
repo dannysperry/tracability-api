@@ -12,4 +12,5 @@ class License < ApplicationRecord
 
   has_many :vehicles
   has_many :locations
+  has_many :growing_stages
 end
