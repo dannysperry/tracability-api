@@ -1,6 +1,13 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :strain do
+    name { Faker::Company.name }
+    expected_potency 28.4
+    expected_yield 400
+    veg_days 40
+    flower_days 70
+  end
   factory :location do
     license
     city

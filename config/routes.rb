@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         end
         resources :cities
       end
+      resources :strains
       resources :regulations
       resources :inventory_types
       resources :notes

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506234807) do
+ActiveRecord::Schema.define(version: 20170507004246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 20170506234807) do
     t.index ["notable_type", "notable_id"], name: "index_notes_on_notable_type_and_notable_id", using: :btree
   end
 
+  create_table "product_processes", force: :cascade do |t|
+    t.string   "processable_type"
+    t.integer  "processable_id"
+    t.integer  "process_type",     null: false
+    t.string   "name",             null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["processable_type", "processable_id"], name: "index_product_processes_on_processable_type_and_processable_id", using: :btree
+  end
+
   create_table "regulations", force: :cascade do |t|
     t.string   "legal_reference_code", null: false
     t.text     "description"
@@ -74,6 +84,16 @@ ActiveRecord::Schema.define(version: 20170506234807) do
     t.string   "abbreviation", limit: 2, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "strains", force: :cascade do |t|
+    t.string   "name",             null: false
+    t.float    "expected_potency"
+    t.float    "expected_yield"
+    t.integer  "veg_days"
+    t.integer  "flower_days"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

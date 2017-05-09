@@ -39,15 +39,15 @@ module Rails
       protected
 
         def parent_class
-          options.parent.classify.constantize
+          options.parent.classify.constantize if options.parent.present?
         end
 
         def singular_parent_table_name
-          options.parent.downcase.singularize
+          options.parent.downcase.singularize if options.parent.present?
         end
 
         def plural_parent_table_name
-          options.parent.downcase.pluralize
+          options.parent.downcase.pluralize if options.parent.present?
         end
 
       private

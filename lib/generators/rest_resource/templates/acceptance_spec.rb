@@ -61,7 +61,9 @@ resource "<%= class_name %>s" do
     example "Creates a <%= singular_table_name %>" do
       expect {
         do_request({
+        <%- if options.parent.present? -%>
           <%= singular_parent_table_name %>_id: <%= singular_parent_table_name %>_id,
+        <%- end -%>
           <%= singular_table_name %>: attributes_for(:<%= singular_table_name %>)
         })
       }.to change {

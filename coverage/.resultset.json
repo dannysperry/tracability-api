@@ -80,6 +80,13 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/strain.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/vehicle.rb": [
         1,
         1,
@@ -459,6 +466,57 @@
         null,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/strains_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/vehicles_controller.rb": [
         1,
         1,
@@ -559,6 +617,11 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/serializers/strain_serializer.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/users_controller.rb": [
         1,
         1,
@@ -588,6 +651,6 @@
         null
       ]
     },
-    "timestamp": 1494115697
+    "timestamp": 1494294032
   }
 }
