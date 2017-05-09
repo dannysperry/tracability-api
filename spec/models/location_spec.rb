@@ -8,6 +8,8 @@ RSpec.describe Location, type: :model do
   it { is_expected.to belong_to(:license) }
   it { is_expected.to belong_to(:city) }
 
+  it { is_expected.to have_many(:rooms) }
+
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:street_address) }
   it { is_expected.to validate_presence_of(:area_in_inches) }

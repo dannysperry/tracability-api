@@ -1,6 +1,13 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :room do
+    location
+    room_type { [:office, :inventory, :additive, :mother, :seedling, :clone, :veg, :pre_flower, :flower, :harvest].sample }
+    name { Faker::Company.name }
+    area_in_inches 20_000
+    is_growing_space { [true, false].sample }
+  end
   factory :patient do
     physician
     city

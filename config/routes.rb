@@ -12,7 +12,9 @@ Rails.application.routes.draw do
       resources :states, shallow: true do
         resources :licenses, shallow: true do
           resources :vehicles
-          resources :locations
+          resources :locations, shallow: true do
+            resources :rooms
+          end
           resources :growing_stages
         end
         resources :cities
