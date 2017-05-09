@@ -28,10 +28,15 @@ ex: `bundle exec rails g rest_resource Project description:text email phone_numb
 
 Double check the attributes inside
   1. the migration file
-  2. factories
-  3. controller safe params
-  4. acceptance specs attributes
-  5. model specs associated with any active record associations/validations made.
-  6. Run `bundle exec rails db:migrate RAILS_ENV=test` and `bundle exec rails db:migrate`
-  7. 
+    You'll have to add these attributes on your own :/
+  2. model validations and associations
+  3. factory
+    You'll have to add these attributes on your own :/
+  4. serializer
+    You'll have to add these attributes on your own :/
+  5. model specs
+  6. controller safe params
+  7. acceptance specs attributes for null attribute
+  8. routes
+  9. Run `bundle exec rails db:migrate RAILS_ENV=test` and `bundle exec rails db:migrate`
 

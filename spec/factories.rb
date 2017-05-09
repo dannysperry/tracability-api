@@ -1,6 +1,13 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :patient do
+    physician
+    city
+    name { Faker::Company.name }
+    street_address { Faker::Address.street_address }
+    is_medical { [true, false].sample }
+  end
   factory :physician do
     name { Faker::Company.name }
     license_number { Faker::Crypto.md5 }

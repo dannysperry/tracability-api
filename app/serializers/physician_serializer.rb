@@ -1,3 +1,3 @@
 class PhysicianSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :license_number
 end
