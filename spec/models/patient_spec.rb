@@ -12,5 +12,4 @@ RSpec.describe Patient, type: :model do
   it { is_expected.to validate_presence_of(:street_address) }
 
   let(:subject) { create(:patient) }
-  it { is_expected.to validate_inclusion_of(:is_medical).in_array([true, false]) }
 end

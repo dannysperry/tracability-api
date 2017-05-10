@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509215237) do
+ActiveRecord::Schema.define(version: 20170509231225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(version: 20170509215237) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "room_sections", force: :cascade do |t|
+    t.string   "name",                             null: false
+    t.integer  "area_in_inches",                   null: false
+    t.integer  "section_type",     default: 0
+    t.boolean  "is_growing_space", default: false
+    t.integer  "room_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["room_id"], name: "index_room_sections_on_room_id", using: :btree
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.integer  "room_type",                        null: false
     t.string   "name",                             null: false
@@ -174,6 +185,15 @@ ActiveRecord::Schema.define(version: 20170509215237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["license_id"], name: "index_vehicles_on_license_id", using: :btree
+  end
+
+  create_table "weights", force: :cascade do |t|
+    t.string   "weighable_type"
+    t.integer  "weighable_id"
+    t.float    "amount",         null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["weighable_type", "weighable_id"], name: "index_weights_on_weighable_type_and_weighable_id", using: :btree
   end
 
   add_foreign_key "cities", "states"
