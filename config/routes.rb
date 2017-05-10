@@ -14,7 +14,9 @@ Rails.application.routes.draw do
           resources :vehicles
           resources :locations, shallow: true do
             resources :rooms, shallow: true do
-              resources :room_sections
+              resources :room_sections, shallow: true do
+                resources :growing_media
+              end
             end
           end
           resources :growing_stages

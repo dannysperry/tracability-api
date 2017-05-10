@@ -6,6 +6,7 @@ RSpec.describe RoomSection, type: :model do
   it { is_expected.to be_valid }
 
   it { is_expected.to belong_to(:room) }
+  it { is_expected.to have_many(:growing_media) }
 
   it { is_expected.to validate_presence_of(:section_type) }
   it { is_expected.to validate_presence_of(:name) }

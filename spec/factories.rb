@@ -1,38 +1,45 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :growing_medium do
+    room_section
+    medium_type { GrowingMedium.medium_types.keys.sample }
+    name { Faker::Ancient.god }
+    barcode { Faker::Code.ean }
+    quantity 2
+  end
   factory :room_section do
-    name { Faker::Company.name }
+    name { Faker::Ancient.hero }
     area_in_inches 10_000
-    section_type { [:grow, :harvest, :inventory].sample }
+    section_type { RoomSection.section_types.keys.sample }
     is_growing_space { [true, false].sample }
     room
   end
   factory :room do
     location
     room_type { [:office, :inventory, :additive, :mother, :seedling, :clone, :veg, :pre_flower, :flower, :harvest].sample }
-    name { Faker::Company.name }
+    name { Faker::GameOfThrones.house }
     area_in_inches 20_000
     is_growing_space { [true, false].sample }
   end
   factory :patient do
     physician
     city
-    name { Faker::Company.name }
+    name { Faker::Name.name }
     street_address { Faker::Address.street_address }
     is_medical { [true, false].sample }
   end
   factory :physician do
-    name { Faker::Company.name }
+    name { Faker::Name.name }
     license_number { Faker::Crypto.md5 }
   end
   factory :growing_stage do
-    name { Faker::Company.name }
+    name { Faker::Name.name }
     description { Faker::Lorem.sentence }
     license
   end
   factory :strain do
-    name { Faker::Company.name }
+    name { Faker::GameOfThrones.character }
     expected_potency 28.4
     expected_yield 400
     veg_days 40
