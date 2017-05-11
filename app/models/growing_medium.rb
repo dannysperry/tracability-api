@@ -1,4 +1,6 @@
 class GrowingMedium < ApplicationRecord
+  include Weighable
+
   belongs_to :room_section
 
   enum medium_type: { hydro: 0, soil: 1, soilless: 2 }

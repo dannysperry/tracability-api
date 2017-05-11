@@ -37,6 +37,31 @@
         1,
         null,
         1,
+        null,
+        1,
+        null
+      ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/concerns/weighable.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        18,
+        null,
+        18,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/grolar/workspace/rails/tracability-api/app/models/growing_stage.rb": [
@@ -153,6 +178,18 @@
         1,
         null
       ],
+      "/Users/grolar/workspace/rails/tracability-api/app/models/weight.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
       "/Users/grolar/workspace/rails/tracability-api/app/controllers/api/v1/cities_controller.rb": [
         1,
         1,
@@ -232,7 +269,9 @@
         1,
         2,
         null,
-        2,
+        1,
+        null,
+        1,
         1,
         null,
         1,
@@ -979,6 +1018,7 @@
         1,
         null,
         1,
+        1,
         null
       ],
       "/Users/grolar/workspace/rails/tracability-api/app/serializers/room_section_serializer.rb": [
@@ -1075,6 +1115,6 @@
         null
       ]
     },
-    "timestamp": 1494393433
+    "timestamp": 1494463398
   }
 }

@@ -13,6 +13,8 @@ module Api
       def create
         @growing_medium = @room_section.growing_media.build(growing_medium_params)
 
+        binding.pry
+
         if @growing_medium.save
           render json: @growing_medium, status: :created
         else
@@ -46,7 +48,7 @@ module Api
         end
         # Only allow a trusted parameter "white list" through.
         def growing_medium_params
-          params.require(:growing_medium).permit(:room_section_id, :medium_type, :name, :barcode, :quantity)
+          params.require(:growing_medium).permit(:room_section_id, :medium_type, :name, :barcode, :quantity, :weight_amount, :weight_amount_type, :weight_type)
         end
     end
   end

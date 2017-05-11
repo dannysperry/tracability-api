@@ -41,17 +41,21 @@ resource "GrowingMediums" do
       parameter :name, 'Name of GrowingMedium'
       parameter :barcode, 'Barcode of GrowingMedium'
       parameter :quantity, 'Quantity of specific of GrowingMedium item'
+      parameter :weight_amount, 'Integer of Weight'
+      parameter :weight_amount_type, 'Metric weight unit used'
     end
+
+    parameter :weight_type, 'base: 0, adjustment: 1', scope: :growing_medium
 
     example "Creates a growing_medium" do
       room_section_id
       expect {
         do_request({
           room_section_id: room_section_id,
-          growing_medium: attributes_for(:growing_medium)
+          growing_medium: growing_medium.attributes.merge({ weight_amount: 100, weight_amount_type: :g, weight_type: :base })
         })
       }.to change {
-        GrowingMedium.count
+        Weight.count
       }.by 1
       expect(client.status).to eq(201)
     end
@@ -82,6 +86,7 @@ resource "GrowingMediums" do
     end
 
     example "Updates a growing_medium" do
+      growing_medium.save
       do_request({
         growing_medium: {
           room_section_id: growing_medium.room_section_id,

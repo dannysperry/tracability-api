@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510045006) do
+ActiveRecord::Schema.define(version: 20170510163324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,16 +102,6 @@ ActiveRecord::Schema.define(version: 20170510045006) do
     t.index ["license_number"], name: "index_physicians_on_license_number", unique: true, using: :btree
   end
 
-  create_table "product_processes", force: :cascade do |t|
-    t.string   "processable_type"
-    t.integer  "processable_id"
-    t.integer  "process_type",     null: false
-    t.string   "name",             null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["processable_type", "processable_id"], name: "index_product_processes_on_processable_type_and_processable_id", using: :btree
-  end
-
   create_table "regulations", force: :cascade do |t|
     t.string   "legal_reference_code", null: false
     t.text     "description"
@@ -201,9 +191,11 @@ ActiveRecord::Schema.define(version: 20170510045006) do
   create_table "weights", force: :cascade do |t|
     t.string   "weighable_type"
     t.integer  "weighable_id"
-    t.float    "amount",         null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.float    "amount",                     null: false
+    t.integer  "amount_type",    default: 0
+    t.integer  "weight_type",    default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["weighable_type", "weighable_id"], name: "index_weights_on_weighable_type_and_weighable_id", using: :btree
   end
 

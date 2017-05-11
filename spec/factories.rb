@@ -1,12 +1,21 @@
 require 'faker'
 
 FactoryGirl.define do
+  factory :weight do
+    association :weighable, factory: :growing_medium
+    amount 20
+    amount_type 1
+    weight_type 0
+  end
   factory :growing_medium do
     room_section
-    medium_type { GrowingMedium.medium_types.keys.sample }
+    medium_type 1
     name { Faker::Ancient.god }
     barcode { Faker::Code.ean }
     quantity 2
+    after(:create) do |growing_medium|
+      create(:weight, weighable: growing_medium, weight_type: :base)
+    end
   end
   factory :room_section do
     name { Faker::Ancient.hero }
